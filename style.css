@@ -1,42 +1,51 @@
-/* *  {
-    border: 3px solid red;
-*, *:before, *:after { box-sizing: inherit; }  
+ /**  {
+    border: 2px solid red;
+
 } */
-  
-  html {
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+    html {
     box-sizing: border-box;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
 body {
     height: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
-    background: #f3f3f3;
     display: grid;
     grid-gap: 1rem;
     grid-template-areas:
     "header header header"
     ".      main   ."
     "footer footer footer";
-    
+    grid-template-rows: 5rem 1fr auto;
+    grid-auto-columns: 1fr 1r 1fr;
 }
 /* header */
 
 .header{
-    
-    grid-area: header;
-    display: grid;
-    justify-content: center;
-   
+   grid-area: header; 
+   display: flex;
+   flex-direction: column;
+    align-items: center;
+    top: 0;
+   left: 0;
+   width: 100%;
+   background: white;
+   color: black;
+    position: fixed;
+    box-shadow: 0px 1px 5px grey;
+    opacity: 0.9;
 }
 
 .navigation {
-list-style: none;
+display: flex;
 background: mediumspringgreen;
+list-style: none;
 
 }
 .nav-link {
-    color: black;
     text-decoration: none;
     font-weight: bold;
 }
@@ -47,6 +56,7 @@ a:hover {
 
 /* main */
 .main {
+    margin-block-start: 5rem;
 grid-area: main;
 display: grid;
 grid-auto-flow: row;
@@ -61,6 +71,8 @@ grid-template-areas:
 }
 .hero {
 grid-area: hero;
+color: white;
+
 }
 
 .highlight {
@@ -84,12 +96,17 @@ grid-area: special-edition;
 .footer{
     grid-area: footer;
     background: orange;
+    text-align: center;
 }
 
 /*@media screen and (min-width: 50em) {
   body {
       
   }
+
+.header {
+grid-template-columns: 2fr auto;
+}
 .main{
   grid-area: main;
 display: grid;
