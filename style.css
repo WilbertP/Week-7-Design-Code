@@ -1,7 +1,8 @@
 /* *  {
     border: 3px solid red;
-  } */
-
+*, *:before, *:after { box-sizing: inherit; }  
+} */
+  
   html {
     box-sizing: border-box;
     font-size: 16px;
@@ -10,6 +11,7 @@
 body {
     height: 100%;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+    background: #f3f3f3;
     display: grid;
     grid-gap: 1rem;
     grid-template-areas:
@@ -21,10 +23,11 @@ body {
 /* header */
 
 .header{
+    
     grid-area: header;
     display: grid;
     justify-content: center;
-    background: palevioletred;
+   
 }
 
 .navigation {
@@ -32,6 +35,15 @@ list-style: none;
 background: mediumspringgreen;
 
 }
+.nav-link {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+a:hover {
+    text-decoration: underline;
+}
+
 
 /* main */
 .main {
