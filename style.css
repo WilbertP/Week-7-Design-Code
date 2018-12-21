@@ -24,8 +24,8 @@ body {
     "header header header"
     ".      main   ."
     "footer footer footer";
-    grid-template-rows: 2rem 1fr auto;
-    grid-auto-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-auto-columns: auto 1fr auto;
     line-height: 1.4;
 }
 /* -------------header=----------------- */
@@ -71,7 +71,7 @@ body {
 
 /* -----------------main-------------------- */
 .main {
-    margin-block-start: 5rem;
+    margin-block-start: 6rem;
     grid-area: main;
     display: grid;
     grid-template-areas: 
@@ -166,6 +166,7 @@ width: 100%;
 .most-recent{
     grid-area: most-recent;
 }
+
 
 .footer{
     grid-area: footer;
