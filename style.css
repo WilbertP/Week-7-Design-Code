@@ -9,6 +9,7 @@
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
     html {
     box-sizing: border-box;
     font-size: 16px;
@@ -27,7 +28,7 @@ body {
     grid-auto-columns: 1fr 1fr 1fr;
     line-height: 1.4;
 }
-/* header */
+/* -------------header=----------------- */
 
 .header {
    grid-area: header; 
@@ -40,34 +41,35 @@ body {
    background: white;
    color: black;
     position: fixed;
-    box-shadow: 0px 1px 5px grey;
-    opacity: 0.97;
+    box-shadow: 0px 1px 15px #c5c5c5;
+    opacity: 0.96;
 }
-.site-title{
+.site-title {
     font-size: 1.4rem;
     font-weight: bold;
     color: black;
 }
- /* als ik het specifieker maak met > ul erachter werkt het wel, 
- maar ik snap niet helemaal waarom het nu niet werkt */
-.navigation {
-    display: flex;
-    background: mediumspringgreen;
-    list-style: none;
-}
-/* ----------------------- */
 
+.header a:hover {
+    text-decoration: underline;
+}
+
+.navigation ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1em;
+}
 
 .nav-link {
     text-decoration: none;
     font-weight: bold;
 }
-a:hover {
-    text-decoration: underline;
-}
 
-
-/* main */
+/* -----------------main-------------------- */
 .main {
     margin-block-start: 5rem;
     grid-area: main;
@@ -75,9 +77,9 @@ a:hover {
     grid-template-areas: 
     "hero" "featured" "top-stories" "special-edition" "most-recent" "highlight";
     grid-template-rows: 
-    30rem auto auto 300px auto 200px;
-    }
-
+    30rem auto auto 18.75rem auto 12.5rem;
+    grid-gap: 1rem;
+ }
 h3:after {
     background: black;
     display: block;
@@ -86,36 +88,80 @@ h3:after {
     content: '';
     margin: 10px 2px;    
   }
-.hero {
-    grid-area: hero;
+
+.block {
+    box-shadow: 0px 1px 15px #c5c5c5;
+    padding: 1.5rem;
+  }
+
+.block-content {
+width: 100%;
 }
-.hero-content {
-    color: white;
-
-}
-
-.highlight {
-    grid-area: highlight;
-
-}
-
-.featured {
-    grid-area: featured;
-}
-
 .block__title {
     text-transform: uppercase;
+    font-size: 1rem;
+}
+.story__text:hover {
+    text-decoration: underline;
 }
 .story__category {
     text-transform: uppercase;
     color: #adadad;
     font-size: 0.75rem;
+    letter-spacing: 0.1rem;
+  }
+
+.hero {
+    grid-area: hero;
+    color: white;
+    margin: 0 0 2rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
+.hero__link:hover .hero__title {
+    text-decoration: underline;
+}
+.hero__category {
+    text-transform: uppercase;
+    color: #adadad;
+    font-size: 0.75rem;
+}
+.hero__title{
+    font-size: 2.5rem;
+}
+.hero__title:after {
+    background: white;
+    display: block;
+    height: 1px;
+    width: 2rem;
+    content: '';
+    margin: 10px 2px;    
+  }
+
+.highlight {
+    grid-area: highlight;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+}
+
+  }
+.featured {
+    grid-area: featured;
+}
+
 .top-stories{
     grid-area: top-stories;
 }    
 .special-edition {
     grid-area: special-edition;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    min-height: 300px;
+    color: white;
 }
 .most-recent{
     grid-area: most-recent;
@@ -126,24 +172,40 @@ h3:after {
     text-align: center;
 }
 
-/*@media screen and (min-width: 50em) {
-  body {
-      
-  }
+/* ############################################################ */
+ @media screen and (min-width: 50em) {
 
 .header {
-grid-template-columns: 2fr auto;
+display: grid; 
+    grid-template-columns: 2fr auto;
 }
-.main{
+
+.site-title{
+    padding: 0 1rem;
+}
+
+
+
+.navigation{
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   } 
+
+
+
+.main {
+    margin-block-start: 2rem;
     grid-area: main;
     display: grid;
-    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas: 
     "hero           hero            hero            highlight"
     "hero           hero            hero            featured"
     "top-stories    special-edition special-edition feautured"
-    "top-stories    most-recent     most-recent     most-recent";
-
+    "top-stories    most-recent     most-recent     most-recent"
 }
 
 .hero {
@@ -152,7 +214,6 @@ grid-template-columns: 2fr auto;
 
 .highlight {
     grid-area: highlight;
-
 }
 
 .featured {
