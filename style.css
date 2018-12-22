@@ -15,7 +15,7 @@
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
   }
-
+ 
 body {
     height: 100%;
     display: grid;
@@ -31,15 +31,15 @@ body {
 /* -------------header=----------------- */
 
 .header {
-   grid-area: header; 
-   display: flex;
-   flex-direction: column;
+    grid-area: header; 
+    display: flex;
+    flex-direction: column;
     align-items: center;
     top: 0;
-   left: 0;
-   width: 100%;
-   background: white;
-   color: black;
+    left: 0;
+    width: 100%;
+    background: white;
+    color: black;
     position: fixed;
     box-shadow: 0px 1px 15px #c5c5c5;
     opacity: 0.96;
@@ -95,7 +95,7 @@ h3:after {
   }
 
 .block-content {
-width: 100%;
+    width: 100%;
 }
 .block__title {
     text-transform: uppercase;
@@ -111,13 +111,20 @@ width: 100%;
     letter-spacing: 0.1rem;
   }
 
+  .hero-content {
+    max-width: 28rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+  }
+
 .hero {
     grid-area: hero;
     color: white;
-    margin: 0 0 2rem;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 .hero__link:hover .hero__title {
     text-decoration: underline;
@@ -128,7 +135,9 @@ width: 100%;
     font-size: 0.75rem;
 }
 .hero__title{
-    font-size: 2.5rem;
+    /* dit had ik niet kunnen bedenken :) steal */
+    font-size: calc(36px + 16 * ((100vw - 320px) / 1330));
+    margin-top: -0.5rem;
 }
 .hero__title:after {
     background: white;
@@ -147,26 +156,77 @@ width: 100%;
     color: white;
 }
 
-  }
+.block.highlight{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.block.highlight p{
+    font-weight: bold;
+}    
+
 .featured {
     grid-area: featured;
+
+}
+.featured-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 2rem;
 }
 
 .top-stories{
     grid-area: top-stories;
-}    
+}
+.story__list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 2rem;
+    list-style: none;
+    counter-reset: my-badass-counter;
+}
+.story__list a:before {
+	content: counter(my-badass-counter, decimal-leading-zero);
+    counter-increment: my-badass-counter;
+    color: #adadad;
+    margin-left: -2.4rem;
+    margin-right: 1rem;
+    font-size: 150%;
+}
+
 .special-edition {
     grid-area: special-edition;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     min-height: 300px;
     color: white;
+}
+.block__title--special{
+    text-transform: initial;
+    font-size: 1.75rem;
+    line-height: 1.4;
+
+}
+.block__title--special:after {
+    background: white;
+    display: block;
+    height: 1px;
+    width: 2rem;
+    content: '';
+    margin: 10px 2px;   
 }
 .most-recent{
     grid-area: most-recent;
 }
-
+.recent-stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 2rem;
+}
 
 .footer{
     grid-area: footer;
@@ -175,9 +235,9 @@ width: 100%;
 
 /* ############################################################ */
  @media screen and (min-width: 50em) {
-
+ 
 .header {
-display: grid; 
+    display: grid; 
     grid-template-columns: 2fr auto;
 }
 
@@ -185,30 +245,29 @@ display: grid;
     padding: 0 1rem;
 }
 
-
-
 .navigation{
     padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: -1em;
    } 
 
-
-
 .main {
-    margin-block-start: 2rem;
+    margin-block-start: 3.2rem;
     grid-area: main;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: 15rem 15rem auto auto auto;
     grid-template-areas: 
     "hero           hero            hero            highlight"
     "hero           hero            hero            featured"
     "top-stories    special-edition special-edition feautured"
     "top-stories    most-recent     most-recent     most-recent"
 }
+ }
 
+/* 
 .hero {
     grid-area: hero;
 }
@@ -232,4 +291,4 @@ display: grid;
 
 .footer{
     grid-area: footer;
-}
+} */
